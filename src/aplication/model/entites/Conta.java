@@ -42,7 +42,10 @@ public class Conta {
         this.limiteSaque = limiteSaque;
     }
     public void saque(Double quantia) throws DomainException {
-        if (quantia > saldo || quantia > limiteSaque){
+        if (quantia > saldo){
+            throw new DomainException("Saldo insiuficiente");
+        }
+        if (quantia > limiteSaque){
             throw new DomainException("Valor superior ao limite");
         }
         saldo -= quantia;
